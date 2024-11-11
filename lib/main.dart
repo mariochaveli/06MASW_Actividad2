@@ -15,29 +15,35 @@ class EventApp extends StatelessWidget {
     return MaterialApp(
       title: 'App de Eventos',
       theme: ThemeData(
-        primaryColor: const Color(0xFFF57C00), // Naranja VIU
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange).copyWith(
-          secondary: const Color(0xFF1976D2), // Azul profundo para contraste
-        ),
-        backgroundColor: Colors.white,
+        primaryColor: const Color(0xFFF57C00),
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
-          headline6: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Color(0xFFF57C00)),
-          bodyText2: TextStyle(fontSize: 16.0, color: Colors.black),
+          titleLarge: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFFF57C00)),
+          bodyMedium: TextStyle(fontSize: 16.0, color: Colors.black),
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFFF57C00), // Naranja VIU
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.white),
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+          titleTextStyle: TextStyle(
+              color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: const Color(0xFFF57C00), // Naranja VIU
-            onPrimary: Colors.white,
+            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFFF57C00),
             textStyle: const TextStyle(fontSize: 16.0),
           ),
         ),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange)
+            .copyWith(
+              secondary:
+                  const Color(0xFF1976D2), // Azul profundo para contraste
+            )
+            .copyWith(surface: Colors.white),
       ),
       initialRoute: '/',
       routes: {

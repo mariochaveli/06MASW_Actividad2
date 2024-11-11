@@ -67,15 +67,17 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              notificationsEnabled ? 'Notificaciones activadas' : 'Notificaciones desactivadas',
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                color: notificationsEnabled ? Colors.green : Colors.red,
-              ),
+              notificationsEnabled
+                  ? 'Notificaciones activadas'
+                  : 'Notificaciones desactivadas',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: notificationsEnabled ? Colors.green : Colors.red,
+                  ),
             ),
             const SizedBox(height: 20),
             Text(
               'Selecciona una categoría de eventos:',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 10),
             DropdownButton<String>(
