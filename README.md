@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+# Members
+
+- Mario Chaveli
+- Amanda Bacallao
+- Marc Pérez
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
