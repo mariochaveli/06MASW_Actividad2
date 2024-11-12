@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/event_detail_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/saved_registrations_screen.dart';
+import 'screens/favorites_screen.dart';
 
 void main() {
   runApp(const EventApp());
@@ -48,8 +49,9 @@ class EventApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
-        '/eventDetail': (context) => const EventDetailScreen(),
         '/settings': (context) => const SettingsScreen(),
+        '/savedRegistrations': (context) => const SavedRegistrationsScreen(), // Nueva ruta para registros guardados
+        '/favorites': (context) => const FavoritesScreen(), // Nueva pantalla de favoritos
       },
     );
   }
