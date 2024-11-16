@@ -1,0 +1,34 @@
+
+{
+    "events": [
+     {
+       "id": 1,
+       "title": "Concierto de Rock",
+       "date": "2024-05-20",
+       "location": "Valencia, España",
+       "category": "Conciertos"
+     },
+     {
+       "id": 2,
+       "title": "Torneo de Baloncesto",
+       "date": "2024-06-10",
+       "location": "Madrid, España",
+       "category": "Deportes"
+     },
+     {
+       "id": 3,
+       "title": "Obra de Teatro Clásico",
+       "date": "2024-07-15",
+       "location": "Barcelona, España",
+       "category": "Teatro"
+     },
+     {
+         "id": 4,
+         "title": "Exposición de pintura ",
+         "date": "2024-11-15",
+         "location": "Sevilla, España",
+         "category": "Arte"
+     }
+ 
+   ]
+ }
