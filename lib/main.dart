@@ -6,6 +6,7 @@ import 'screens/favorites_screen.dart';
 import 'services/api_service.dart';  
 import 'models/event.dart';  
 
+
 void main() {
   runApp(const EventApp());
 }
