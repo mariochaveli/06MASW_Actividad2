@@ -137,6 +137,7 @@ class HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              controller: TextEditingController(text: searchQuery),
               decoration: InputDecoration(
                 labelText: 'Buscar evento',
                 prefixIcon: const Icon(Icons.search),
