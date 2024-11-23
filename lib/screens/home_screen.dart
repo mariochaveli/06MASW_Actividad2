@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'event_detail_screen.dart';
 import 'package:eventos/models/event.dart';
-import 'package:eventos/services/api_service.dart';  
+import 'package:eventos/services/api_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -64,11 +64,18 @@ class HomeScreenState extends State<HomeScreen> {
   // Método para aplicar los filtros
   List<Event> _filterEvents(List<Event> events) {
     return events.where((event) {
-      final matchesCategory = selectedCategory == 'Todos' || event.category == selectedCategory;
-      final matchesSearchQuery = event.title.toLowerCase().contains(searchQuery.toLowerCase());
-      final matchesLocation = selectedLocation == null || event.location == selectedLocation;
-      final matchesDate = selectedDate == null || event.date == selectedDate.toString();
-      return matchesCategory && matchesSearchQuery && matchesLocation && matchesDate;
+      final matchesCategory =
+          selectedCategory == 'Todos' || event.category == selectedCategory;
+      final matchesSearchQuery =
+          event.title.toLowerCase().contains(searchQuery.toLowerCase());
+      final matchesLocation =
+          selectedLocation == null || event.location == selectedLocation;
+      final matchesDate =
+          selectedDate == null || event.date == selectedDate.toString();
+      return matchesCategory &&
+          matchesSearchQuery &&
+          matchesLocation &&
+          matchesDate;
     }).toList();
   }
 
@@ -154,7 +161,13 @@ class HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 10),
             DropdownButton<String>(
               value: selectedCategory,
-              items: <String>['Todos', 'Conciertos', 'Deportes', 'Teatro', 'Artes'].map((String value) {
+              items: <String>[
+                'Todos',
+                'Conciertos',
+                'Deportes',
+                'Teatro',
+                'Artes'
+              ].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -170,7 +183,12 @@ class HomeScreenState extends State<HomeScreen> {
             DropdownButton<String>(
               hint: const Text('Selecciona ubicación'),
               value: selectedLocation,
-              items: <String?>['Valencia, España', 'Madrid, España', 'Barcelona, España', 'Sevilla, España']
+              items: <String?>[
+                'Valencia, España',
+                'Madrid, España',
+                'Barcelona, España',
+                'Sevilla, España'
+              ]
                   .map((String? value) => DropdownMenuItem<String>(
                         value: value,
                         child: Text(value ?? ''),
@@ -216,26 +234,31 @@ class HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton.icon(
-                  icon: const Icon(Icons.clear),
-                  label: const Text('Limpiar filtros'),
-                  onPressed: _clearFilters,
-                ),
-              ],
-            ),
+            if (searchQuery.isNotEmpty ||
+                selectedLocation != null ||
+                selectedDate != null ||
+                selectedCategory != 'Todos')
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton.icon(
+                    icon: const Icon(Icons.clear),
+                    label: const Text('Limpiar filtros'),
+                    onPressed: _clearFilters,
+                  ),
+                ],
+              ),
             Expanded(
               child: FutureBuilder<List<Event>>(
-                future: events, 
+                future: events,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No hay eventos disponibles.'));
+                    return const Center(
+                        child: Text('No hay eventos disponibles.'));
                   } else {
                     // Filtramos los eventos después de que se obtienen
                     final filteredEvents = _filterEvents(snapshot.data!);
@@ -256,7 +279,9 @@ class HomeScreenState extends State<HomeScreen> {
                             subtitle: Text('${event.date} • ${event.location}'),
                             trailing: IconButton(
                               icon: Icon(
-                                isFavorite ? Icons.favorite : Icons.favorite_border,
+                                isFavorite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
                                 color: isFavorite ? Colors.red : null,
                               ),
                               onPressed: () => _toggleFavorite(event),
@@ -288,4 +313,3 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
